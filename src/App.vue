@@ -4,10 +4,9 @@
 // import InputText from "primevue/inputtext";
 // import InputNumber from "primevue/inputnumber";
 // import Select from "primevue/select";
-import Button from "primevue/button";
-import HeaderComponent from "./components/HeaderComponent.vue";
-import DataGridContact from "./components/DataGridContact.vue";
 import CardContact from "./components/CardContact.vue";
+import DataGridContact from "./components/DataGridContact.vue";
+import HeaderComponent from "./components/HeaderComponent.vue";
 
 function toggleDarkMode() {
   document.documentElement.classList.toggle("my-app-dark");

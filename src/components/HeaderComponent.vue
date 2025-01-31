@@ -1,5 +1,15 @@
 <script setup lang="ts">
 import Button from "primevue/button";
+import { reactive } from "vue";
+import ModalAddContact from "./ModalAddContact.vue";
+
+const viewModalAddContact = reactive({
+  visible: false,
+});
+
+function changeModal(value: boolean) {
+  viewModalAddContact.visible = value;
+}
 </script>
 
 <template>
@@ -16,6 +26,7 @@ import Button from "primevue/button";
           label="Adicionar contato"
           size="small"
           icon="pi pi-plus"
+          @click="changeModal(true)"
         />
         <Button
           type="button"
@@ -33,5 +44,9 @@ import Button from "primevue/button";
         />
       </div>
     </div>
+    <ModalAddContact
+      :visible="viewModalAddContact.visible"
+      @getVisible="changeModal"
+    />
   </header>
 </template>
