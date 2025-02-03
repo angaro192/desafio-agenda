@@ -6,26 +6,9 @@
         <Button icon="pi pi-refresh" rounded raised />
       </div>
     </template>
-    <Column>
-      <!-- <template #body="slotProps">
-        <img :src="`${slotProps.data.image}`" class="w-24 rounded" />
-      </template> -->
-    </Column>
-    <Column field="contactName" header="Nome"></Column>
-    <Column field="status" header="Status">
-      <!-- <template #body="slotProps">
-        {{ formatCurrency(slotProps.data.status) }}
-      </template> -->
-    </Column>
-    <Column field="address" header="Endereço"></Column>
-    <Column header="Ações">
-      <!-- <template #body="slotProps">
-        <Tag
-          :value="slotProps.data.inventoryStatus"
-          :severity="getSeverity(slotProps.data)"
-        />
-      </template> -->
-    </Column>
+    <Column field="namePessoa" header="Nome"></Column>
+    <Column field="favorite" header="Favorito"> </Column>
+    <Column field="contact" header="Contato"></Column>
     <template #footer>
       Total de {{ contacts ? contacts.length : 0 }} contatos.
     </template>
