@@ -1,11 +1,5 @@
-<script setup lang="ts">
-import Column from "primevue/column";
-import DataTable from "primevue/datatable";
-const products = [];
-</script>
-
 <template>
-  <DataTable :value="products" tableStyle="min-width: 50rem">
+  <DataTable :value="contacts" tableStyle="min-width: 50rem">
     <template #header>
       <div class="flex flex-wrap items-center justify-between gap-2">
         <span class="text-xl font-bold">Lista de contatos</span>
@@ -13,27 +7,45 @@ const products = [];
       </div>
     </template>
     <Column>
-      <template #body="slotProps">
+      <!-- <template #body="slotProps">
         <img :src="`${slotProps.data.image}`" class="w-24 rounded" />
-      </template>
+      </template> -->
     </Column>
-    <Column field="name" header="Nome"></Column>
+    <Column field="contactName" header="Nome"></Column>
     <Column field="status" header="Status">
-      <template #body="slotProps">
+      <!-- <template #body="slotProps">
         {{ formatCurrency(slotProps.data.status) }}
-      </template>
+      </template> -->
     </Column>
     <Column field="address" header="Endereço"></Column>
     <Column header="Ações">
-      <template #body="slotProps">
+      <!-- <template #body="slotProps">
         <Tag
           :value="slotProps.data.inventoryStatus"
           :severity="getSeverity(slotProps.data)"
         />
-      </template>
+      </template> -->
     </Column>
     <template #footer>
-      Total de {{ products ? products.length : 0 }} contatos.
+      Total de {{ contacts ? contacts.length : 0 }} contatos.
     </template>
   </DataTable>
 </template>
+<script setup lang="ts">
+import Column from "primevue/column";
+import DataTable from "primevue/datatable";
+import { onMounted, ref } from "vue";
+import { apiAxios } from "../api/api";
+const contacts = ref();
+
+onMounted(() => {
+  getAllContacts();
+});
+
+const getAllContacts = async () => {
+  const response = await apiAxios.get("/contact");
+  contacts.value = response.data;
+  console.log(contacts);
+  console.log(response.data);
+};
+</script>
